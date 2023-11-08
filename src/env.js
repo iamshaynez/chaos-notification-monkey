@@ -11,8 +11,11 @@ export const ENV = {
     TELEGRAM_API_DOMAIN: "https://api.telegram.org",
 };
 
-export function initEnv(env) {
+export let AI = null;
 
+
+export function initEnv(env) {
+    AI = env.AI;
     for (const key in ENV) {
         if (env[key]) {
             switch (ENV_VALUE_TYPE[key] || typeof ENV[key]) {

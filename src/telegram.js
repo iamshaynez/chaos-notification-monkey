@@ -14,7 +14,7 @@ export async function sendMessage(text) {
                 method: "post",
                 text: text,
                 chat_id: ENV.TG_CHAT_ID,
-                //parse_mode: "Markdown",
+                parse_mode: "Markdown",
             }),
         }
     );
