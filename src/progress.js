@@ -76,7 +76,7 @@ export function messageProgressBar() {
     messages.push(``);
     messages.push(`你的计划都完成了吗，请继续焦虑，下次见...`);
     let message = messages.join("\n");
-    console.log(message);
+    //console.log(message);
 
     return message;
 }
