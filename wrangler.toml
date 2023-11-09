@@ -1,6 +1,15 @@
 name = "chaos-notification-monkey"
 main = "src/index.js"
 compatibility_date = "2023-10-02"
+workers_dev = false
 
 [ai]
 binding = "AI"
+
+[triggers]
+# Schedule cron triggers:
+# - At every 3rd minute
+# - At 3PM on first day of the month
+# - At 11:59PM on the last weekday of the month
+crons = [ "15 * * * *" ]
+
