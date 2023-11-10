@@ -56,10 +56,42 @@ export async function messageStranger(){
     messages.push(``);
 
     const messageEnglish = await completion("You are a stranger saw me on street", `Say hello to me and hope me have a good day.`);
-    const messageChinese = await translate(messageEnglish);
-    messages.push(messageChinese);
+    //const messageChinese = await translate(messageEnglish);
+    messages.push(messageEnglish);
     messages.push(``);
     messages.push(`希望至少今天开心，下次见...`);
+    let message = messages.join("\n");
+    //console.log(message);
+
+    return message;
+}
+
+export async function messageFutureRich(){
+    let messages = [];
+    messages.push(`这是一条来未来的你的消息...`);
+    messages.push(``);
+
+    const messageEnglish = await completion("You are Future version of me", `Just tell me I am going to be very rich in future, choose your own words.`);
+    //const messageChinese = await translate(messageEnglish);
+    messages.push(messageEnglish);
+    messages.push(``);
+    messages.push(`希望你有力气继续搬砖，下次见...`);
+    let message = messages.join("\n");
+    //console.log(message);
+
+    return message;
+}
+
+export async function messageFuturePoor(){
+    let messages = [];
+    messages.push(`这是一条来未来的你的消息...`);
+    messages.push(``);
+
+    const messageEnglish = await completion("You are Future version of me", `Just tell me I am not going to be very rich in future, I am still be very poor very sad. choose your own words.`);
+    //const messageChinese = await translate(messageEnglish);
+    messages.push(messageEnglish);
+    messages.push(``);
+    messages.push(`希望你继续活着，也许将来情况有变，下次见...`);
     let message = messages.join("\n");
     //console.log(message);
 

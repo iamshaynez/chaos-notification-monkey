@@ -5,6 +5,8 @@ import {
     messageFuture,
     messageCity,
     messageStranger,
+    messageFuturePoor,
+    messageFutureRich,
 } from "./llm.js";
 import { initEnv } from "./env.js";
 import { assistantMessage } from "./utils.js";
@@ -15,6 +17,8 @@ const messageMap = {
     messageStranger: messageStranger,
     messageWarmFriend: messageWarmFriend,
     messageProgressBar: messageProgressBar,
+    messageFuturePoor: messageFuturePoor,
+    messageFutureRich: messageFutureRich,
 };
 
 async function callRandomMethod(obj) {
@@ -36,7 +40,6 @@ async function process() {
     console.log(`message: ${message}`);
     await sendMessage(assistantMessage(message, `混沌消息助手`));
 }
-
 
 export default {
     // http request handler
@@ -62,6 +65,5 @@ export default {
         if (currentHour === randomHour) {
             await process();
         }
-        
     },
 };
