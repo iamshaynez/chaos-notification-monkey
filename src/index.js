@@ -34,7 +34,7 @@ async function process() {
     console.log(`process...`);
     let message = await callRandomMethod(messageMap);
     console.log(`message: ${message}`);
-    //await sendMessage(assistantMessage(message, `混沌消息助手`));
+    await sendMessage(assistantMessage(message, `混沌消息助手`));
 }
 
 
