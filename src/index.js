@@ -8,6 +8,7 @@ import {
     messageFuturePoor,
     messageFutureRich,
 } from "./llm.js";
+import { messageCompliment } from "./compliment.js";
 import { initEnv } from "./env.js";
 import { assistantMessage } from "./utils.js";
 
@@ -19,6 +20,7 @@ const messageMap = {
     messageProgressBar: messageProgressBar,
     messageFuturePoor: messageFuturePoor,
     messageFutureRich: messageFutureRich,
+    messageCompliment: messageCompliment,
 };
 
 async function callRandomMethod(obj) {
@@ -38,7 +40,10 @@ async function process() {
     console.log(`process...`);
     let message = await callRandomMethod(messageMap);
     console.log(`message: ${message}`);
-    await sendMessage(assistantMessage(message, `混沌消息助手`));
+    let messageWithAssistant = assistantMessage(message, `混沌消息助手`);
+    await sendMessage(messageWithAssistant);
+
+    return messageWithAssistant;
 }
 
 export default {
@@ -46,7 +51,7 @@ export default {
     async fetch(request, env) {
         console.log(`http request handler...`);
         initEnv(env);
-        await process();
+        let message = await process();
         return new Response(message, { status: 200 });
     },
 
