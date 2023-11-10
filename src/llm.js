@@ -56,8 +56,8 @@ export async function messageStranger(){
     messages.push(``);
 
     const messageEnglish = await completion("You are a stranger saw me on street", `Say hello to me and hope me have a good day.`);
-    //const messageChinese = await translate(messageEnglish);
-    messages.push(messageEnglish);
+    const messageChinese = await translate(messageEnglish);
+    messages.push(messageChinese);
     messages.push(``);
     messages.push(`希望至少今天开心，下次见...`);
     let message = messages.join("\n");
@@ -72,8 +72,8 @@ export async function messageFutureRich(){
     messages.push(``);
 
     const messageEnglish = await completion("You are Future version of me", `Just tell me I am going to be very rich in future, choose your own words.`);
-    //const messageChinese = await translate(messageEnglish);
-    messages.push(messageEnglish);
+    const messageChinese = await translate(messageEnglish);
+    messages.push(messageChinese);
     messages.push(``);
     messages.push(`希望你有力气继续搬砖，下次见...`);
     let message = messages.join("\n");
@@ -88,8 +88,8 @@ export async function messageFuturePoor(){
     messages.push(``);
 
     const messageEnglish = await completion("You are Future version of me", `Just tell me I am not going to be very rich in future, I am still be very poor very sad. choose your own words.`);
-    //const messageChinese = await translate(messageEnglish);
-    messages.push(messageEnglish);
+    const messageChinese = await translate(messageEnglish);
+    messages.push(messageChinese);
     messages.push(``);
     messages.push(`希望你继续活着，也许将来情况有变，下次见...`);
     let message = messages.join("\n");
@@ -117,6 +117,10 @@ async function completion(systemPrompt, userPrompt) {
 }
 
 async function translate(sentence, from = "english", to = "chinese") {
+    // no translation for now
+    if(true){
+        return sentence;
+    }
     const ai = new Ai(AI);
 
     const response = await ai.run("@cf/meta/m2m100-1.2b", {
