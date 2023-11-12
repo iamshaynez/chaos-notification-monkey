@@ -60,15 +60,13 @@ export default {
         console.log(`scheduled request handler...`);
         initEnv(env);
 
-        // 生成一个随机数，在 0 到 23 之间
-        const randomHour = Math.floor(Math.random() * 24);
-
-        // 获取当前小时
-        const currentHour = new Date().getUTCHours();
-
-        // 如果当前小时等于随机小时，那么执行任务
-        if (currentHour === randomHour) {
+        if(Math.random() < 0.1) {
+            // 有 10% 的概率会执行这里的代码
+            console.log('执行了');
             await process();
-        }
+          } else {
+            // 有 90% 的概率会跳过这里的代码
+            console.log('跳过了'); 
+          }
     },
 };
